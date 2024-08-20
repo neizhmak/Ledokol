@@ -5,7 +5,7 @@ container:
 
 build_task:
   preparation_script:
-    - pacmam -Suy --noconfirm bash binutils bison coreutils diffutils gawk gcc grep gzip m4 make patch perl python sed tar texinfo xz wget
+    - pacman -Suy --noconfirm bash binutils bison coreutils diffutils gawk gcc grep gzip m4 make patch perl python sed tar texinfo xz wget
     - export LFS=/mnt
     - mkdir -pv $LFS
     - mkdir -v $LFS/sources
