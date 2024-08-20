@@ -58,7 +58,8 @@ build_task:
     - su - lfs
     - cd $LFS/sources
     - tar -xJf binutils-2.42.tar.xz
-    - cd binutils*
+    - ls
+    - cd binutils-2.42
     - mkdir -v build
     - cd       build
     - ../configure --prefix=$LFS/tools \
