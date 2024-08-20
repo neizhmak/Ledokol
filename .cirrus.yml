@@ -2,11 +2,12 @@ container:
   image: archlinux:base-devel
   cpu: 8
   memory: 32G
+env:
+  LFS: /mnt
 
 build_task:
   preparation_script:
     - pacman -Suy --noconfirm bash binutils bison coreutils diffutils gawk gcc grep gzip m4 make patch perl python sed tar texinfo xz wget
-    - export LFS=/mnt
     - mkdir -pv $LFS
     - mkdir -v $LFS/sources
     - chmod -v a+wt $LFS/sources
@@ -38,22 +39,23 @@ build_task:
     -   exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
     - EOF
     - cat > ~/.bashrc << "EOF"
-    - set +h
-    - umask 022
-    - LFS=/mnt/lfs
-    - LC_ALL=POSIX
-    - LFS_TGT=$(uname -m)-lfs-linux-gnu
-    - PATH=/usr/bin
-    - if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
-    - PATH=$LFS/tools/bin:$PATH
-    - CONFIG_SITE=$LFS/usr/share/config.site
-    - export LFS LC_ALL LFS_TGT PATH CONFIG_SITE
+    -   set +h
+    -   umask 022
+    -   LFS=/mnt
+    -   LC_ALL=POSIX
+    -   LFS_TGT=$(uname -m)-lfs-linux-gnu
+    -   PATH=/usr/bin
+    -   if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
+    -   PATH=$LFS/tools/bin:$PATH
+    -   CONFIG_SITE=$LFS/usr/share/config.site
+    -   export LFS LC_ALL LFS_TGT PATH CONFIG_SITE
     - EOF
     - export MAKEFLAGS=-j8
     - cat >> ~/.bashrc << "EOF"
-    -  export MAKEFLAGS=-j$(nproc)
+    -   export MAKEFLAGS=-j$(nproc)
     - EOF
-    - source ~/.bash_profile
+  build_temporary_tools_script:
+    - su - lfs
     - cd $LFS/sources
     - tar -xJf binutils*-tar.xz
     - cd binutils*
