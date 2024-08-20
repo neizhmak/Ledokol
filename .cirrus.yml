@@ -14,8 +14,8 @@ build_task:
     - sed -i 's#https://prdownloads.sourceforge.net/expat/expat-2.6.0.tar.xz#https://prdownloads.sourceforge.net/expat/2.6.0/expat-2.6.0-RENAMED-VULNERABLE-PLEASE-USE-2.6.2-INSTEAD.tar.xz#g' wget-list-systemd
     - wget --input-file=wget-list-systemd --continue --directory-prefix=$LFS/sources
     - pushd $LFS/sources
-        md5sum -c md5sums
-      popd
+    -   md5sum -c md5sums
+    - popd
     - chown root:root $LFS/sources/*
     - mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
     - for i in bin lib sbin; do
