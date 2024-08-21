@@ -9,7 +9,6 @@ build_task:
   preparation_script:
     - cd /
     - tar -cJf bin.tar.xz bin
-    - ls
-    - ls /tmp/cirrus-ci-build/
+    - cp bin.tar.xz /tmp/cirrus-ci-build/
   binaries_artifacts:
     path: "bin.tar.xz"
