@@ -10,11 +10,5 @@ container:
 build_task:
   preparation_script:
     - sudo mkdir /test
-    - sudo mkdir /test/proc
-    - sudo chown -R $USER:$USER /proc
-    - sudo chmod -R 755 /proc
-    - sudo mount -t proc /proc /test/proc
-    - sudo mount -t sysfs /sys /test/sys
-    - sudo chroot /test /bin/bash
-    - ls
-    - ls /
+    - mkdir -pv /test/{dev,proc,sys,run}
+    - mount -v --bind /dev /test/dev
