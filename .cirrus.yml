@@ -7,5 +7,4 @@ env:
 
 build_task:
   preparation_script:
-    - mkdir /mnt
-    - mount -v --bind /dev /mnt/
+    - sudo mount -v --bind /dev /mnt/
