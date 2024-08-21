@@ -10,6 +10,7 @@ container:
 build_task:
   preparation_script:
     - sudo mkdir /test
+    - sudo mkdir /test/proc
     - sudo mount -t proc /proc /test/proc
     - sudo mount -t sysfs /sys /test/sys
     - sudo chroot /test /bin/bash
