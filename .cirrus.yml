@@ -7,4 +7,5 @@ env:
 
 build_task:
   preparation_script:
-    - sudo mount -v --bind /dev /mnt/
+    - mkdir /lfs
+    - mount -v --bind /dev /lfs/
