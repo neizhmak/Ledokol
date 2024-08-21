@@ -8,6 +8,8 @@ env:
 build_task:
   preparation_script:
     - cd /
-    - tar -cJf bin.tar.xz bin
+    - tar -cJf bin.tar.xz /bin
+    - ls
+    - ls /
   binaries_artifacts:
-    path: "/bin.tar.xz"
+    path: "bin.tar.xz"
