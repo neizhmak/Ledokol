@@ -7,8 +7,7 @@ env:
 
 build_task:
   preparation_script:
-    - cd /
-    - tar -cJf /tmp/cirrus-ci-build/bin.tar.xz bin
+    - tar -cJf /tmp/cirrus-ci-build/bin.tar.xz /bin
     - ls /tmp/cirrus-ci-build/
   binaries_artifacts:
     path: "bin.tar.xz"
