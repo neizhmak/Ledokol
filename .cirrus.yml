@@ -8,7 +8,7 @@ env:
   LFS_TGT: $(uname -m)-lfs-linux-gnu
   PATH: $LFS/tools/bin:/usr/bin
   CONFIG_SITE: $LFS/usr/share/config.site
-  MAKEFLAGS: -j$(nproc)
+#  MAKEFLAGS: -j$(nproc)
 
 build_task:
   preparation_script:
@@ -44,7 +44,8 @@ build_task:
     - set +h
     - umask 022
     - if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
-    - export LFS LC_ALL LFS_TGT PATH CONFIG_SITE
+    - export MAKEFLAGS=-j$(nproc)
+    - export LFS LC_ALL LFS_TGT PATH CONFIG_SITE MAKEFLAGS
     - export
     - exit
     - cd $LFS/sources
