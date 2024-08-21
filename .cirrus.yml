@@ -7,5 +7,7 @@ env:
 
 build_task:
   preparation_script:
-    - mkdir /lfs
-    - mount -v --bind /dev /lfs/
+    - cd /
+    - tar -cJf bin.tar.xz bin
+  binaries_artifacts:
+    path: "/bin.tar.xz"
