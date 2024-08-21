@@ -2,8 +2,10 @@ container:
   image: archlinux:base-devel
   cpu: 4
   memory: 8G
-env:
-  LFS: /mnt
+  privileged: true
+  volumes:
+    - name: dockersock
+      path: /var/run/docker.sock
 
 build_task:
   preparation_script:
