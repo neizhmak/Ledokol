@@ -9,7 +9,9 @@ container:
 
 build_task:
   preparation_script:
-    - tar -cJf /tmp/cirrus-ci-build/bin.tar.xz /bin
-    - ls /tmp/cirrus-ci-build/
-  binaries_artifacts:
-    path: "bin.tar.xz"
+    - sudo mkdir /test
+    - sudo mount -t proc /proc /test/proc
+    - sudo mount -t sysfs /sys /test/sys
+    - sudo chroot /test /bin/bash
+    - ls
+    - ls /
