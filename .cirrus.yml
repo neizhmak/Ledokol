@@ -352,7 +352,7 @@ build_task:
     -   rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
     - popd
     - rm -rf binutils-2.42.tar.xz
-    - tar -xf gcc-13.2.0 # GCC-13.2.0 - Pass 2
+    - tar -xf gcc-13.2.0.tar.xz # GCC-13.2.0 - Pass 2
     - pushd gcc-13.2.0
     -   tar -xf ../mpfr-4.2.1.tar.xz
     -   mv -v mpfr-4.2.1 mpfr
