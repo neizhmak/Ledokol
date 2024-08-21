@@ -4,11 +4,6 @@ container:
   memory: 8G
 env:
   LFS: /mnt
-  LC_ALL: POSIX
-  LFS_TGT: $(uname -m)-lfs-linux-gnu
-  PATH: $LFS/tools/bin:/usr/bin
-  CONFIG_SITE: $LFS/usr/share/config.site
-#  MAKEFLAGS: -j$(nproc)
 
 build_task:
   preparation_script:
@@ -43,11 +38,15 @@ build_task:
     - su - lfs
     - set +h
     - umask 022
+    - LFS=/mnt
+    - LC_ALL=POSIX
+    - LFS_TGT=$(uname -m)-lfs-linux-gnu
+    - PATH=/usr/bin
     - if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
-    - export MAKEFLAGS=-j$(nproc)
-    - export LFS LC_ALL LFS_TGT PATH CONFIG_SITE MAKEFLAGS
-    - export
-    - exit
+    - PATH=$LFS/tools/bin:$PATH
+    - CONFIG_SITE=$LFS/usr/share/config.site
+    - MAKEFLAGS=-j$(nproc)
+    - export MAKEFLAGS LFS LC_ALL LFS_TGT PATH CONFIG_SITE
     - cd $LFS/sources
     - tar -xf binutils-2.42.tar.xz # Binutils-2.42 - Pass 1
     - pushd binutils-2.42
