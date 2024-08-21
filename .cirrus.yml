@@ -44,6 +44,7 @@ build_task:
     - set +h
     - umask 022
     - if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
+    - export LFS LC_ALL LFS_TGT PATH CONFIG_SITE
     - export
     - exit
     - cd $LFS/sources
