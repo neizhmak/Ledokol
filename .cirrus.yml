@@ -393,3 +393,6 @@ build_task:
     -   ln -sv gcc $LFS/usr/bin/cc
     - popd
     - rm -rf gcc-13.2.0
+    - tar -cJf /tmp/cirrus-ci-build/mnt.tar.xz /mnt
+  binaries_artifacts:
+    path: "mnt.tar.xz"
