@@ -489,7 +489,7 @@ build_task:
     - chgrp -v utmp /var/log/lastlog
     - chmod -v 664  /var/log/lastlog
     - chmod -v 600  /var/log/btmp
-    - tree /
+    - ls /
     - tar -cJf /tmp/cirrus-ci-build/mnt.tar.xz /mnt
   binaries_artifacts:
     path: "mnt.tar.xz"
